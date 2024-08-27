@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "479975444628",
+    "project_id": "my-study-project-f6e98",
+    "storage_bucket": "my-study-project-f6e98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479975444628:android:5be96a2868e98d09d1a481",
+        "android_client_info": {
+          "package_name": "com.example.code_lab_tutorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBzRRiNH_UqbQzavUV7ZrRV2sly8b4ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479975444628:android:b29304973699bab0d1a481",
+        "android_client_info": {
+          "package_name": "com.example.codel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBzRRiNH_UqbQzavUV7ZrRV2sly8b4ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479975444628:android:960de8697f56e137d1a481",
+        "android_client_info": {
+          "package_name": "com.example.new_program"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBzRRiNH_UqbQzavUV7ZrRV2sly8b4ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479975444628:android:077e134e7b4d6b2bd1a481",
+        "android_client_info": {
+          "package_name": "com.pets.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBzRRiNH_UqbQzavUV7ZrRV2sly8b4ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479975444628:android:276f263bb15315b0d1a481",
+        "android_client_info": {
+          "package_name": "com.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBzRRiNH_UqbQzavUV7ZrRV2sly8b4ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
