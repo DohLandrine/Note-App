@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:479975444628:android:5be96a2868e98d09d1a481",
         "android_client_info": {
-          "package_name": "com.example.code_lab_tutorial"
+          "package_name": "com.pets.app"
         }
       },
       "oauth_client": [],
@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:479975444628:android:b29304973699bab0d1a481",
         "android_client_info": {
-          "package_name": "com.example.codel"
+          "package_name": "com.pets.app"
         }
       },
       "oauth_client": [],
@@ -47,7 +47,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:479975444628:android:960de8697f56e137d1a481",
         "android_client_info": {
-          "package_name": "com.example.new_program"
+          "package_name": "com.pets.app"
         }
       },
       "oauth_client": [],
@@ -85,7 +85,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:479975444628:android:276f263bb15315b0d1a481",
         "android_client_info": {
-          "package_name": "com.todo"
+          "package_name": "com.example.pets"
         }
       },
       "oauth_client": [],
