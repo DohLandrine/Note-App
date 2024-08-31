@@ -23,7 +23,19 @@ class CloudDatabaseService {
         );
   }
 
-  Stream<QuerySnapshot> get notes {
+  void editNote(String title, String description, String id) async{
+    Map<String, dynamic> data = {
+      'title': title,
+      'description': description,
+    };
+    await db.collection(users).doc(id).set(data, SetOptions(merge: true));
+  }
+
+  void deleteNotes({required String id}) async{
+    await db.collection(users).doc(id).delete();
+  }
+
+  Stream<QuerySnapshot> get notes{
     return db.collection(users).snapshots();
   }
 }

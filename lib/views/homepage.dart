@@ -1,11 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:pets/constants/theme.dart';
+import 'package:pets/constants/widget.dart';
 import 'package:pets/presenter/note_provider.dart';
 import 'package:pets/views/add_edit_note_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pets/services/cloud_database_service.dart';
 import 'package:intl/intl.dart' as intl;
+import 'add_edit_note_page.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -23,7 +28,7 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colour.dark,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: ListView(
+        child: Column(
           // mainAxisSize: MainAxisSize.min,
           // crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.start,
@@ -53,53 +58,56 @@ class _HomepageState extends State<Homepage> {
                       ),
                     );
                   } else {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      itemCount: snapshots.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        DateTime time =
-                            snapshots.data!.docs[index]['time'].toDate();
-                        var day = intl.DateFormat.MMMd().format(time);
-                        var hour_min = intl.DateFormat.Hm().format(time);
-                        return ListTile(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AddEditNotePage(
-                                  index: index,
-                                  newNote: false,
-                                  note: {
-                                    'time': time,
-                                    'title': snapshots.data!.docs[index]
-                                        ['title'],
-                                    'description': snapshots.data!.docs[index]
-                                        ['description']
-                                  },
-                                ),
-                              )),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              side: const BorderSide(color: Colour.blue)),
-                          tileColor: Colour.lightDark,
-                          title: Text(
-                            '${snapshots.data!.docs[index]['title']}',
-                            style: CustomTextStyle.title,
-                          ),
-                          trailing: Text('$day $hour_min',
-                              style: const TextStyle(color: Colour.dark)),
-                          subtitle: Text(
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            '${snapshots.data!.docs[index]['description']}',
-                            style: const TextStyle(color: Colour.white),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const SizedBox(
-                          height: 10,
-                        );
-                      },
+                    return Flexible(
+                      child: ListView.separated(
+                        //shrinkWrap: true,
+                        itemCount: snapshots.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          DateTime time =
+                              snapshots.data!.docs[index]['time'].toDate();
+                          var day = intl.DateFormat.MMMd().format(time);
+                          var hour_min = intl.DateFormat.Hm().format(time);
+                          return ListTile(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AddEditNotePage(
+                                    index: index,
+                                    newNote: false,
+                                    note: {
+                                      'id': snapshots.data!.docs[index]['id'],
+                                      'time': time,
+                                      'title': snapshots.data!.docs[index]
+                                          ['title'],
+                                      'description': snapshots.data!.docs[index]
+                                          ['description']
+                                    },
+                                  ),
+                                )),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                side: const BorderSide(color: Colour.blue)),
+                            tileColor: Colour.lightDark,
+                            title: Text(
+                              '${snapshots.data!.docs[index]['title']}',
+                              style: CustomTextStyle.title,
+                            ),
+                            trailing: Text('$day $hour_min',
+                                style: const TextStyle(color: Colour.dark)),
+                            subtitle: Text(
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              '${snapshots.data!.docs[index]['description']}',
+                              style: const TextStyle(color: Colour.white),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(
+                            height: 10,
+                          );
+                        },
+                      ),
                     );
                   }
                 })
@@ -107,17 +115,29 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       floatingActionButton: Align(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.bottomRight,
         child: RawMaterialButton(
-          onPressed: () {
-            Navigator.push(
+          onPressed: () async {
+            var result = await Connectivity().checkConnectivity();
+            if (result == ConnectivityResult.none) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                customSnackBar(
+                    content: 'No internet connection',
+                    icon: Icons.wifi_off,
+                    colour: Colour.red),
+              );
+            } else {
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const AddEditNotePage(
-                          newNote: true,
-                        )));
+                  builder: (context) => const AddEditNotePage(
+                    newNote: true,
+                  ),
+                ),
+              );
+            }
           },
-          fillColor: Colour.blue,
+          fillColor: Colour.darkBlue,
           shape: const CircleBorder(),
           padding: const EdgeInsets.all(10),
           child: const Icon(
